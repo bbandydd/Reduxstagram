@@ -7,10 +7,17 @@ const Comments = React.createClass({
                 <p>
                     <strong>{ comment.user }</strong>
                     { comment.text }
-                    <button className="remove-comment">&times;</button>
+                    <button className="remove-comment" onClick={ this.handleRemove.bind(null, i) }>&times;</button>
                 </p>
             </div>
         )
+    },
+    handleRemove(i) {
+
+        if (confirm('Are you sure delete this comment?')) {
+            const { postId } = this.props.params;
+            this.props.removeComment(postId, i);    
+        }
     },
     handleSubmit(e) {
         e.preventDefault();
@@ -20,6 +27,7 @@ const Comments = React.createClass({
         const comment = this.refs.comment.value;
 
         this.props.addComment(postId, author, comment);
+        this.refs.commentForm.reset();
     },
     render() {
         const { postComments } = this.props;
