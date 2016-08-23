@@ -1,7 +1,11 @@
+'use strict';
+
+import * as Types from '../constants/index';
+
 // increment
 export function increment(index) {
     return {
-        type: 'INCREMENT_LIKES',
+        type: Types.INCREMENT_LIKES,
         index
     }
 }
@@ -9,7 +13,7 @@ export function increment(index) {
 // add comment
 export function addComment(postId, author, comment) {
     return {
-        type: 'ADD_COMMENT',
+        type: Types.ADD_COMMENT,
         postId,
         author,
         comment
@@ -19,7 +23,7 @@ export function addComment(postId, author, comment) {
 // remove comment
 export function removeComment(postId, i) {
     return {
-        type: 'REMOVE_COMMENT',
+        type: Types.REMOVE_COMMENT,
         postId,
         i
     }
